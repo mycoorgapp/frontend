@@ -23,3 +23,41 @@ page-schedule {
    }
   }
 }
+
+.card-background-page {
+
+  ion-card {
+    position: relative;
+    text-align: center;
+  }
+  .card-rating {
+    position: absolute;
+    top: 0;
+    display: -webkit-box;
+    font-size: 1.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    right: 2px;
+  }
+
+  .card-title {
+    position: absolute;
+    bottom: 10%;
+    display: -webkit-box;
+    font-size: 1.0em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .card-subtitle {
+    font-size: 1.0em;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    color: #fff;
+  }
+
+}

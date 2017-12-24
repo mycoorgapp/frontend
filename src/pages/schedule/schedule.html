@@ -29,10 +29,57 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="card-background-page">
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
+  <!-- chethan : showing  cards start-->
+  <ion-card *ngFor="let homestay of homestayLists" (click)="goToHomeStayDetail(homestay)">
+    <img  src="{{homestay.image}}"/>
+
+      <div class="card-rating"> {{ homestay.rating }} </div>
+      <ion-row>
+      <ion-col text-left>
+        <div >{{ homestay.name }}</div>
+        <div >
+          <span style="font-size: 8px;" *ngFor="let tag of homestay.tags"> 
+          {{ homestay.name }} </span>
+        </div>
+      </ion-col>
+      <ion-col text-right>
+        <div icon-right >
+        <div><span style="font-size: 8px;"> per night </span></div>
+        <div>
+          <span style="font-size: 8px;">
+            <ion-icon name="inr"></ion-icon>
+            {{ homestay.rate}}
+          </span>
+          <span> 
+            <ion-icon name="inr"></ion-icon>
+            {{ homestay.rate - homestay.rate*(homestay.discount/100) }}
+          </span>
+        </div>
+        <div><span style="font-size: 8px;"> you save {{ homestay.rate*(homestay.discount/100) }} ({{homestay.discount}}%discount)</span> </div>  
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <!-- chethan: showing cards ends  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <ion-list #scheduleList [hidden]="shownSessions === 0">
 

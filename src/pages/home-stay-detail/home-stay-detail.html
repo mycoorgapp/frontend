@@ -1,0 +1,83 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card *ngIf="homestay">
+
+	<ion-item>
+	    <ion-avatar item-start>
+	       <img src="assets/img/speakers/bear.jpg">
+	    </ion-avatar>
+	    <h2>{{homestay.name}}</h2>
+	    <p>====</p>
+	</ion-item>
+	  
+	<ion-slides autoplay="5000" loop="true" speed="3000">
+	    <ion-slide *ngFor="let image of homestay.imageSlide">
+	      <img src="{{ image }}" />
+	    </ion-slide>
+	</ion-slides>
+	<ion-item>
+		<h2>About {{homestay.name}}</h2>
+		<p> wow awsome... coorg coorg coorg, natres is here. feal the nature </p>
+	</ion-item>   
+
+
+
+	<ion-item>
+	    <h2>Amenities</h2>
+	    <p>
+	    	<ion-row>
+      			<ion-col >
+	    			<ion-icon name="pin" item-start large>WiFi</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="football" item-start large>Pool</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="wine" item-start large>Spa</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="navigate" item-start large>Parking</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="navigate" item-start large>Pets</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="navigate" item-start large>A/C</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="navigate" item-start large>Restaurants</ion-icon>
+	    		</ion-col>	
+	    		<ion-col >
+	    			<ion-icon name="navigate" item-start large>Hotel bar</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="navigate" item-start large>Gym</ion-icon>
+	    		</ion-col>
+	    		<ion-col >
+	    			<ion-icon name="navigate" item-start large>Fire camp</ion-icon>
+	    		</ion-col>
+	    	</ion-row>
+	    </p>
+	</ion-item>
+
+	<ion-item>
+	    <h2>Rate </h2>
+	    <p>{{homestay.rate}}</p>
+	</ion-item>
+	<ion-item>
+	  	<h2>policy</h2>
+	  	<p>{{homestay.policy}}</p>
+	</ion-item>
+	</ion-card>
+	<ion-fab bottom right #fab>
+	    <button ion-fab>Book</button>
+  	</ion-fab>
+</ion-content>

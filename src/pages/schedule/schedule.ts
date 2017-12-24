@@ -1,23 +1,30 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { AlertController, App, FabContainer, ItemSliding, List, ModalController, NavController, ToastController, LoadingController, Refresher } from 'ionic-angular';
+import {
+   AlertController, 
+   App, 
+   FabContainer, 
+   ItemSliding, 
+   List, 
+   ModalController, 
+   NavController, 
+   ToastController, 
+   LoadingController, 
+   Refresher } from 'ionic-angular';
 
-/*
-  To learn how to use third party libs in an
-  Ionic app check out our docs here: http://ionicframework.com/docs/v2/resources/third-party-libs/
-*/
-// import moment from 'moment';
 
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 
 import { SessionDetailPage } from '../session-detail/session-detail';
 import { ScheduleFilterPage } from '../schedule-filter/schedule-filter';
-
+import { HomeStayService } from '../../providers/homestay.service';
+import { HomeStayDetailPage } from '../home-stay-detail/home-stay-detail';
 
 @Component({
   selector: 'page-schedule',
-  templateUrl: 'schedule.html'
+  templateUrl: 'schedule.html',
+  providers: [ HomeStayService ]
 })
 export class SchedulePage {
   // the list is a child of the schedule page
@@ -34,6 +41,10 @@ export class SchedulePage {
   groups: any = [];
   confDate: string;
 
+
+  //chethan
+  homestayLists: any = [];
+
   constructor(
     public alertCtrl: AlertController,
     public app: App,
@@ -43,6 +54,7 @@ export class SchedulePage {
     public toastCtrl: ToastController,
     public confData: ConferenceData,
     public user: UserData,
+    private homeStayService: HomeStayService
   ) {}
 
   ionViewDidLoad() {
@@ -51,14 +63,24 @@ export class SchedulePage {
   }
 
   updateSchedule() {
+    //http://www.mocky.io/v2/5a3e0b402f00001506171342
     // Close any open sliding items when the schedule updates
     this.scheduleList && this.scheduleList.closeSlidingItems();
-
+    this.homeStayService.list().then(res => {
+      this.homestayLists = res;
+      return res;
+    });
     this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
       this.groups = data.groups;
     });
   }
+
+  goToHomeStayDetail(homeStay){
+    this.navCtrl.push(HomeStayDetailPage, { homeStayId: homeStay.id });
+  }
+
+
 
   presentFilter() {
     let modal = this.modalCtrl.create(ScheduleFilterPage, this.excludeTracks);

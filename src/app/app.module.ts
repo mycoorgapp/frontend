@@ -28,7 +28,7 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
-
+import { HomeStayDetailPage } from '../pages/home-stay-detail/home-stay-detail';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,8 @@ import { UserData } from '../providers/user-data';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    HomeStayDetailPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +66,8 @@ import { UserData } from '../providers/user-data';
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
-        { component: SignupPage, name: 'SignupPage', segment: 'signup' }
+        { component: SignupPage, name: 'SignupPage', segment: 'signup' },
+        { component: HomeStayDetailPage, name:'HomeStayDetail', segment:'homeStayDetail/:homeStayId'}
       ]
     }),
     IonicStorageModule.forRoot()
@@ -86,7 +88,8 @@ import { UserData } from '../providers/user-data';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    HomeStayDetailPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
