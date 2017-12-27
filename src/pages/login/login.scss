@@ -3,16 +3,48 @@
 
 page-user {
   .logo {
-    padding: 20px 0;
-    min-height: 200px;
     text-align: center;
-
-    img {
-      max-width: 150px;
+    img{
+      width: 30%;
     }
   }
 
   .list {
     margin-bottom: 0;
   }
+}
+$bg_color: #b50014;
+.content_ctr{
+  margin-top: 30%;
+}
+.login_bg{
+	background-image: url("./../assets/img/bg_image.png");
+  background-size: cover;
+}
+.bgd_trans{
+	background: transparent;
+	border-bottom: 1px solid #fff !important;
+	min-height: 2em;
+  font-size: 12px;
+  // .item-inner{
+	// 	border-bottom: 1px solid #b50014 !important;
+	// }
+}
+*::-webkit-input-placeholder {
+  color: #fff !important;
+}
+*:-moz-placeholder {
+  color: #fff !important;
+}
+*:-ms-input-placeholder { /* IE10+ */
+  color: #fff !important;
+}
+.icon_size{
+  font-size: 2em;
+}
+.btn_radius{
+  border-radius: 10px;
+}
+.input_clr{
+  color: #fff;
 }
