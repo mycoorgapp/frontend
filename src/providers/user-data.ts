@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-
+import { environment } from '../environments/environment';
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-
-
+import { UserService } from './user.service';
+import { Http, Headers } from '@angular/http';
+const API_HOST:string = environment.API_HOST;
 @Injectable()
 export class UserData {
   _favorites: string[] = [];
@@ -12,7 +13,9 @@ export class UserData {
 
   constructor(
     public events: Events,
-    public storage: Storage
+    public storage: Storage,
+    public userService: UserService,
+    protected http: Http
   ) {}
 
   hasFavorite(sessionName: string): boolean {
@@ -30,11 +33,31 @@ export class UserData {
     }
   };
 
-  login(username: string): void {
-    this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
-    this.events.publish('user:login');
-  };
+  login(params) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(
+      API_HOST + '/authentication', 
+      JSON.stringify(params), 
+      { headers: headers }
+    )
+    .toPromise()
+    .then(response => {
+      var resJSON = response.json();
+      
+      localStorage.setItem('token', resJSON.accessToken);
+      return this.userService.list({})
+    }).then( (users:any) =>{
+      localStorage.setItem('user', JSON.stringify(users.data[0]));
+     /* Smooch.updateUser({
+        givenName: users.data[0].name,
+        surname: " ",
+        email: users.data[0].email
+      })*/
+      return true;
+    })
+  }
 
   signup(username: string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);

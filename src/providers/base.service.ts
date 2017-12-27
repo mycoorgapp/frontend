@@ -1,9 +1,7 @@
 import { environment } from '../environments/environment';
-//import { HttpModule }    from '@angular/http';
 import { Injectable } from '@angular/core';
-/*import { Headers } from '@angular/http';*/
-//import { AuthHttp } from 'angular2-jwt'
-import { Http }    from '@angular/http';
+import { Headers } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt'
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -11,7 +9,7 @@ export class BaseService {
   private host: string = environment.API_HOST;
   private basePath: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: AuthHttp) { }
 
   init(basePath: string) {
     this.basePath = basePath;
@@ -21,11 +19,11 @@ export class BaseService {
     return this.host + '/' + this.basePath
   }
 
-  list() {
-   /* let headers = new Headers();
-    headers.append('Accept','application/json');*/
+  list(filters?, sort?) {
+    let headers = new Headers();
+    headers.append('Accept','application/json');
     //chethan : as of now no need of this 
-    /*var sorts = [];
+    var sorts = [];
     for (var key in sort) {
       var value = sort[key];
       if(!Object.keys(filters).find((val) => 
@@ -44,7 +42,7 @@ export class BaseService {
       for(let filter of filters){
         params.append(filter.key, filter.val);
       }
-    }*/
+    }
     console.log("this.baseURL() ", this.baseURL())
     return this.http.get(this.baseURL(),{ })
       .toPromise()

@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
-
+import { AuthHttp, AuthConfig } from 'angular2-jwt'
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
+import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -28,7 +28,12 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+import { UserService } from '../providers/user.service';
 import { HomeStayDetailPage } from '../pages/home-stay-detail/home-stay-detail';
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp( new AuthConfig({}), http, options);
+}
 
 @NgModule({
   declarations: [
@@ -95,8 +100,14 @@ import { HomeStayDetailPage } from '../pages/home-stay-detail/home-stay-detail';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ConferenceData,
     UserData,
+    UserService,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [ Http, RequestOptions ]
+    },
   ]
 })
 export class AppModule { }
