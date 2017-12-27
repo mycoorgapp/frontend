@@ -50,7 +50,7 @@ export class ConferenceApp {
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
     { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
-    { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
+    { title: 'Logout', name: 'LoginPage', component: TabsPage, icon: 'log-out', logsOut: true }
   ];
   loggedOutPages: PageInterface[] = [
     { title: 'Login', name: 'LoginPage', component: LoginPage, icon: 'log-in' },
@@ -70,15 +70,17 @@ export class ConferenceApp {
   ) {
 
     // Check if the user has already seen the tutorial
-    this.storage.get('hasSeenTutorial')
-      .then((hasSeenTutorial) => {
-        if (hasSeenTutorial) {
-          this.rootPage = TabsPage;
-        } else {
-          this.rootPage = TutorialPage;
-        }
-        this.platformReady()
-      });
+    // this.storage.get('hasSeenTutorial')
+    //   .then((hasSeenTutorial) => {
+    //     if (hasSeenTutorial) {
+    //       this.rootPage = TabsPage;
+    //     } else {
+    //       this.rootPage = TutorialPage;
+    //     }
+    //     this.platformReady()
+    //   });
+    this.platformReady();
+    this.rootPage = LoginPage;
 
     // load the conference data
     confData.load();

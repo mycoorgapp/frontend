@@ -1,22 +1,22 @@
-<ion-header>
+<!-- <ion-header>
 	<ion-navbar>
 		<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
 		<ion-title>Login</ion-title>
 	</ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
-	<div class="logo">
-		<img src="assets/img/appicon.svg" alt="Ionic logo">
+<ion-content class="login_bg">
+	<div class="logo content_ctr" >
+		<img src="../assets/img/logo.png" alt="logo">
 	</div>
 
 	<form #loginForm="ngForm" novalidate>
 		<ion-list no-lines>
-			<ion-item>
-				<ion-label stacked color="primary">Username</ion-label>
-				<ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+			<ion-item class="bgd_trans">
+				<ion-label color="primary"><ion-icon name="ios-contact-outline" class="icon_size"></ion-icon></ion-label>
+				<ion-input placeholder="Username" class="input_clr" [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
 					required>
 				</ion-input>
 			</ion-item>
@@ -24,9 +24,9 @@
 				Username is required
 			</p>
 
-			<ion-item>
-				<ion-label stacked color="primary">Password</ion-label>
-				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+			<ion-item class="bgd_trans">
+				<ion-label color="primary"><ion-icon name="ios-key-outline" class="icon_size"></ion-icon></ion-label>
+				<ion-input placeholder="Password" class="input_clr" [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
 				</ion-input>
 			</ion-item>
 			<p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
@@ -36,10 +36,10 @@
 
 		<ion-row responsive-sm>
 			<ion-col>
-				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
+				<button ion-button (click)="onLogin(loginForm)" type="submit" block class="btn_radius">Login</button>
 			</ion-col>
 			<ion-col>
-				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
+				<button ion-button (click)="onSignup()" color="light" block class="btn_radius">Signup</button>
 			</ion-col>
 		</ion-row>
 	</form>
