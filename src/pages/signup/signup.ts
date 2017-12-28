@@ -5,7 +5,7 @@ import { NavController } from 'ionic-angular';
 
 import { UserData } from '../../providers/user-data';
 
-import { UserOptions } from '../../interfaces/user-options';
+import { UserSignupOptions } from '../../interfaces/user-signup-options';
 
 import { TabsPage } from '../tabs-page/tabs-page';
 
@@ -15,7 +15,7 @@ import { TabsPage } from '../tabs-page/tabs-page';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  signup: UserOptions = { username: '', password: '' };
+  signup: UserSignupOptions = {  username: '',  email: '',  password: '', mobile: ''};
   submitted = false;
 
   constructor(public navCtrl: NavController, public userData: UserData) {}
@@ -24,8 +24,9 @@ export class SignupPage {
     this.submitted = true;
 
     if (form.valid) {
-      this.userData.signup(this.signup.username);
-      this.navCtrl.push(TabsPage);
+      this.userData.signup(this.signup).then(res => {
+        //this.navCtrl.push(TabsPage);
+      });
     }
   }
 }

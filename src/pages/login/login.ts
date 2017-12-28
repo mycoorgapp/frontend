@@ -15,7 +15,7 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  login: UserOptions = { username: '', password: '' };
+  login: UserOptions = { email: '', password: '' };
   submitted = false;
 
   constructor(public navCtrl: NavController, 
@@ -28,10 +28,15 @@ export class LoginPage {
 
   onLogin(form: NgForm) {
     this.submitted = true;
-
+    console.log("(this.login ", this.login);
+    
     if (form.valid) {
-      this.userData.login(this.login.username);
-      this.navCtrl.push(TabsPage);
+      this.userData.login(this.login).then(res => {
+        console.log("res  ", res);
+        if(res.status === "success"){
+          this.navCtrl.push(TabsPage);
+        }
+      });
     }
   }
 

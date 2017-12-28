@@ -16,12 +16,12 @@
 		<ion-list no-lines>
 			<ion-item class="bgd_trans">
 				<ion-label color="primary"><ion-icon name="ios-contact-outline" class="icon_size"></ion-icon></ion-label>
-				<ion-input placeholder="Username" class="input_clr" [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+				<ion-input placeholder="Email" class="input_clr" [(ngModel)]="login.email" name="email" type="email" #email="ngModel" spellcheck="false" autocapitalize="off"
 					required>
 				</ion-input>
 			</ion-item>
-			<p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
-				Username is required
+			<p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+				email is required
 			</p>
 
 			<ion-item class="bgd_trans">

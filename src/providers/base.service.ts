@@ -43,19 +43,16 @@ export class BaseService {
         params.append(filter.key, filter.val);
       }
     }
-    console.log("this.baseURL() ", this.baseURL())
-    return this.http.get(this.baseURL(),{ })
+    
+    return this.http.get(this.baseURL(),{ search:params, headers:headers })
       .toPromise()
       .then(response => {
         return response.json();
       }).catch(this.handleError);
-  
-    
-
   }
 
-  get(id) {
-    /*let headers = new Headers();
+  get(id, params=null) {
+    let headers = new Headers();
     headers.append('Accept','application/json');
     
     let url = this.baseURL() + '/' + id;
@@ -66,27 +63,29 @@ export class BaseService {
       .toPromise()
       .then(response => {
         return response.json();
-      }).catch(this.handleError);*/
-   
-   console.log(id);
-   
-    return this.http.get("http://www.mocky.io/v2/5a3e660d2f0000041217138a",{ })
-      .toPromise()
-      .then(response => {
-        return response.json();
       }).catch(this.handleError);
-  
   }
 
-  /*save(item) {
+  save(item) {
     if (!item._id || item._id === 'new') {
       return this.create(item)
     } else {
       return this.update(item)
     }
-  }*/
+  }
 
-  /*update(item) {
+  create(item) {
+    delete item._id
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.baseURL(), JSON.stringify(item), { headers: headers })
+      .toPromise().then(response => {
+        return response.json();
+      }).catch(this.handleError);
+  }
+  
+  update(item) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept','application/json');
@@ -97,7 +96,7 @@ export class BaseService {
         return response.json();
       }).catch(this.handleError);
   }
-
+/*
   patchMultiple(item, query) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -121,18 +120,8 @@ export class BaseService {
         return response.json();
       }).catch(this.handleError);
   }
-
-  create(item) {
-    delete item._id
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.post(this.baseURL(), JSON.stringify(item), { headers: headers })
-      .toPromise().then(response => {
-        return response.json();
-      }).catch(this.handleError);
-  }
-
+*/
+/*
   delete(id) {
     let headers = new Headers();
     headers.append('Accept','application/json');

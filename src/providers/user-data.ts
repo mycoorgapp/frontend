@@ -4,6 +4,7 @@ import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UserService } from './user.service';
 import { Http, Headers } from '@angular/http';
+
 const API_HOST:string = environment.API_HOST;
 @Injectable()
 export class UserData {
@@ -37,6 +38,7 @@ export class UserData {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
+    params.strategy = "local";
     return this.http.post(
       API_HOST + '/authentication', 
       JSON.stringify(params), 
@@ -45,24 +47,20 @@ export class UserData {
     .toPromise()
     .then(response => {
       var resJSON = response.json();
-      
       localStorage.setItem('token', resJSON.accessToken);
       return this.userService.list({})
     }).then( (users:any) =>{
       localStorage.setItem('user', JSON.stringify(users.data[0]));
-     /* Smooch.updateUser({
-        givenName: users.data[0].name,
-        surname: " ",
-        email: users.data[0].email
-      })*/
-      return true;
+      return {status: "success"};
+    }).catch(e => {
+      return e
     })
   }
 
-  signup(username: string): void {
+  signup(userData) {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
-    this.events.publish('user:signup');
+    return this.userService.save(userData)
+    //this.events.publish('user:signup');
   };
 
   logout(): void {

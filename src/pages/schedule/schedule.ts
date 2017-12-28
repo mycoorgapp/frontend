@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-
+import { Component, ViewChild, OnInit } from '@angular/core';
 import {
    AlertController, 
    App, 
@@ -26,11 +25,7 @@ import { HomeStayDetailPage } from '../home-stay-detail/home-stay-detail';
   templateUrl: 'schedule.html',
   providers: [ HomeStayService ]
 })
-export class SchedulePage {
-  // the list is a child of the schedule page
-  // @ViewChild('scheduleList') gets a reference to the list
-  // with the variable #scheduleList, `read: List` tells it to return
-  // the List and not a reference to the element
+export class SchedulePage  {
   @ViewChild('scheduleList', { read: List }) scheduleList: List;
 
   dayIndex = 0;
@@ -57,18 +52,21 @@ export class SchedulePage {
     private homeStayService: HomeStayService
   ) {}
 
+
+
   ionViewDidLoad() {
     this.app.setTitle('Schedule');
-    this.updateSchedule();
+    this.loadTableData();
   }
 
-  updateSchedule() {
-    //http://www.mocky.io/v2/5a3e0b402f00001506171342
+  loadTableData() {
     // Close any open sliding items when the schedule updates
     this.scheduleList && this.scheduleList.closeSlidingItems();
     this.homeStayService.list().then(res => {
-      this.homestayLists = res;
-      return res;
+      console.log("res ", res);
+      
+      this.homestayLists = res.data;
+      return res.data;
     });
     this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
