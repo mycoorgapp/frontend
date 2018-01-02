@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
    AlertController, 
    App, 
@@ -90,6 +90,8 @@ export class SchedulePage  {
         this.updateSchedule();
       }
     });
+  }
+  updateSchedule(){
 
   }
 

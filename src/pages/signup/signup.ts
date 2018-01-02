@@ -25,7 +25,8 @@ export class SignupPage {
 
     if (form.valid) {
       this.userData.signup(this.signup).then(res => {
-        //this.navCtrl.push(TabsPage);
+        console.log(res);
+        this.navCtrl.push(TabsPage);
       });
     }
   }
