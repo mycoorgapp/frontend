@@ -9,7 +9,7 @@ import { PopoverPage } from '../about-popover/about-popover';
 })
 export class AboutPage {
   conferenceDate = '2047-05-17';
-
+  user = {};
   constructor(public popoverCtrl: PopoverController) { }
 
   presentPopover(event: Event) {

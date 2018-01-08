@@ -29,7 +29,8 @@ import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { UserService } from '../providers/user.service';
 import { HomeStayDetailPage } from '../pages/home-stay-detail/home-stay-detail';
-
+import { BookingPage } from '../pages/booking/booking';
+import { FilterPage } from '../pages/filter/filter'
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig({}), http, options);
 }
@@ -51,7 +52,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     TabsPage,
     TutorialPage,
     SupportPage,
-    HomeStayDetailPage
+    HomeStayDetailPage,
+    BookingPage,
+    FilterPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
-        { component: HomeStayDetailPage, name:'HomeStayDetail', segment:'homeStayDetail/:homeStayId'}
+        { component: HomeStayDetailPage, name:'HomeStayDetail', segment:'homeStayDetail/:homeStayId'},
+        { component: BookingPage, name:'BookingPage', segment:'booking/:homeStayId'},
+        { component: FilterPage, name:"FilterPage", segment:'filter/:filterName'}
       ]
     }),
     IonicStorageModule.forRoot()
@@ -93,7 +98,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     TabsPage,
     TutorialPage,
     SupportPage,
-    HomeStayDetailPage
+    HomeStayDetailPage,
+    BookingPage,
+    FilterPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

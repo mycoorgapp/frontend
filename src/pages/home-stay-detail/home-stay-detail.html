@@ -10,12 +10,8 @@
 <ion-content padding>
 	<ion-card *ngIf="homestay">
 
-	<ion-item>
-	    <ion-avatar item-start>
-	       <img src="assets/img/speakers/bear.jpg">
-	    </ion-avatar>
-	    <h2>{{homestay.name}}</h2>
-	    <p>====</p>
+	<ion-item >
+	    <p>{{homestay.display_name}}</p>
 	</ion-item>
 	  
 	<ion-slides autoplay="5000" loop="true" speed="3000">
@@ -24,60 +20,98 @@
 	    </ion-slide>
 	</ion-slides>
 	<ion-item>
-		<h2>About {{homestay.name}}</h2>
-		<p> wow awsome... coorg coorg coorg, natres is here. feal the nature </p>
+		<h4>{{homestay.property_type}} - {{homestay.property_details.location}}</h4>
 	</ion-item>   
+	<ion-item>
+		<ion-grid>
+		  <ion-row>
+		    <ion-col col-6>
+		    	<ion-icon name="people">
+		      </ion-icon>
+		      	{{homestay.property_details.max_guests}} Guests
+		    </ion-col>
+		    <ion-col col-6>
+		    	<ion-icon name="people">
+		      </ion-icon>
+			      {{homestay.property_details.beds}} Beds
+		    </ion-col>
+		  </ion-row>
+		  <ion-row>
+		    <ion-col col-6>
+		      <ion-icon name="people">
+		      </ion-icon>
+			      {{homestay.property_details.bedrooms}} Bedrooms
+		    </ion-col>
+		    <ion-col col-6>
+		      <ion-icon name="people">
+		      </ion-icon>
+		      	{{homestay.property_details.baths}} Baths
+		    </ion-col>
+		  </ion-row>
+		</ion-grid>
+	</ion-item>
 
-
-
+	<ion-card-content>
+		<p> {{homestay.property_discription.discription}}</p>
+		<br >
+		<p> {{homestay.property_discription.space}}</p>
+		<br >
+		<p> {{homestay.property_discription.guest_access}}</p>
+	</ion-card-content>
 	<ion-item>
 	    <h2>Amenities</h2>
-	    <p>
-	    	<ion-row>
-      			<ion-col >
-	    			<ion-icon name="pin" item-start large>WiFi</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="football" item-start large>Pool</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="wine" item-start large>Spa</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="navigate" item-start large>Parking</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="navigate" item-start large>Pets</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="navigate" item-start large>A/C</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="navigate" item-start large>Restaurants</ion-icon>
-	    		</ion-col>	
-	    		<ion-col >
-	    			<ion-icon name="navigate" item-start large>Hotel bar</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="navigate" item-start large>Gym</ion-icon>
-	    		</ion-col>
-	    		<ion-col >
-	    			<ion-icon name="navigate" item-start large>Fire camp</ion-icon>
-	    		</ion-col>
-	    	</ion-row>
-	    </p>
+    	<ion-grid>
+			  <ion-row>
+			    <ion-col col-6>
+			      <ion-icon name="pin" item-start large></ion-icon>
+			      WiFi
+			    </ion-col>
+			    <ion-col col-6>
+			      <ion-icon name="football" item-start large></ion-icon>
+			      Pool
+			    </ion-col>
+			  </ion-row>
+			  <ion-row>
+			    <ion-col col-6>
+			      <ion-icon name="wine" item-start large></ion-icon>
+			      Spa
+			    </ion-col>
+			    <ion-col col-6>
+			      <ion-icon name="navigate" item-start large></ion-icon>
+			      Parking
+			    </ion-col>
+			  </ion-row>
+			  <ion-row>
+			    <ion-col col-6>
+			      <ion-icon name="navigate" item-start large></ion-icon>
+			      Pets
+			    </ion-col>
+			    <ion-col col-6>
+			      <ion-icon name="navigate" item-start large></ion-icon>
+			      A/C
+			    </ion-col>
+			  </ion-row>
+			</ion-grid>
 	</ion-item>
 
 	<ion-item>
-	    <h2>Rate </h2>
-	    <p>{{homestay.rate}}</p>
+	    <h2>Room arrangements </h2>
+    	<ion-col col-6 *ngFor="let arrangenemts of homestay.sleeping_arrangements" >
+      	<ion-icon name="pin" item-start large></ion-icon>
+      	{{arrangenemts.label}}
+      	{{arrangenemts.room_cont }} - left
+	    </ion-col> 
 	</ion-item>
 	<ion-item>
-	  	<h2>policy</h2>
-	  	<p>{{homestay.policy}}</p>
+	  	<h2>House rules</h2>
+	  	<p *ngFor="let rules of homestay.house_rules" >{{rules.rule}}</p>
+	</ion-item>
+	<ion-item> 
+	  	<h2>Cancellation</h2>
+	  	<p *ngFor="let rules of homestay.house_rules" >{{homestay.cancellations.rule}}</p>
 	</ion-item>
 	</ion-card>
 	<ion-fab bottom right #fab>
-	    <button ion-fab>Book</button>
-  	</ion-fab>
+    <button ion-fab (click)="goToBooking(homestay)">Book</button>
+	</ion-fab>
 </ion-content>

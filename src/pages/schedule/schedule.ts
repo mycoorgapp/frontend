@@ -75,7 +75,7 @@ export class SchedulePage  {
   }
 
   goToHomeStayDetail(homeStay){
-    this.navCtrl.push(HomeStayDetailPage, { homeStayId: homeStay.id });
+    this.navCtrl.push(HomeStayDetailPage, { homeStayId: homeStay._id });
   }
 
 

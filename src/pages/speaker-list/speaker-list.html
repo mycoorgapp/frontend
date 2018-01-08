@@ -3,12 +3,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Speakers</ion-title>
+    <ion-title>---</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="outer-content speaker-list">
-  <ion-list [virtualScroll]="speakers">
+
+
+  <ion-item>
+    <ion-label>From date</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="fromdate"></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>To date</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="todate"></ion-datetime>
+  </ion-item>
+
+  
+
+  <!-- <ion-list [virtualScroll]="speakers">
     <ion-grid fixed>
       <ion-row align-items-stretch>
 
@@ -62,5 +76,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

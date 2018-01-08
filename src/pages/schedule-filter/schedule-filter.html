@@ -5,7 +5,7 @@
     </ion-buttons>
 
     <ion-title>
-      Filter Sessions
+      Filters
     </ion-title>
 
     <ion-buttons end>
@@ -18,12 +18,33 @@
 
   <ion-list>
     <ion-list-header>Tracks</ion-list-header>
+      <ion-item>
+       <ion-label>Price</ion-label>
+        <ion-range min="0" max="2000" [(ngModel)]="price" color="secondary">
+          <ion-label range-left>0</ion-label>
+          <ion-label range-right>2000</ion-label>
+        </ion-range>
+      </ion-item>
 
-    <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
+    {{price}}
+
+    <ion-item>
+      <ion-label>facility</ion-label>
+      <ion-select [(ngModel)]="toppings" multiple="true">
+        <ion-option>aaa</ion-option>
+        <ion-option>bbbb</ion-option>
+        <ion-option>cccc</ion-option>
+        <ion-option>dddd</ion-option>
+        <ion-option>eeee</ion-option>
+        <ion-option>fff</ion-option>
+      </ion-select>
+    </ion-item>
+
+   <!--  <ion-item *ngFor="let track of tracks" [attr.track]="track.name | lowercase">
       <span item-start class="dot"></span>
       <ion-label>{{track.name}}</ion-label>
       <ion-toggle [(ngModel)]="track.isChecked" color="secondary"></ion-toggle>
-    </ion-item>
+    </ion-item> -->
 
   </ion-list>
 

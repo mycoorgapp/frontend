@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { BookingPage } from '../booking/booking';
 import { ConferenceData } from '../../providers/conference-data';
 import { HomeStayService } from '../../providers/homestay.service';
 
@@ -25,7 +25,6 @@ export class HomeStayDetailPage {
   ionViewWillEnter() {
     this.homeStayService.get(this.navParams.data.homeStayId).then(res => {
       console.log("res ", res);
-      
       this.homestay = res;
       this.homestay.imageSlide = ["assets/img/speakers/bear.jpg","assets/img/speakers/lion.jpg","assets/img/speakers/duck.jpg","assets/img/speakers/lion.jpg"]
       return res;
@@ -38,4 +37,8 @@ export class HomeStayDetailPage {
 	goToSessionDetail(session: any) {
 		this.navCtrl.push('HomeStayDetailPage', { sessionId: session.id });
 	}
+
+  goToBooking(homestay){
+    this.navCtrl.push(BookingPage, { homeStayId: homestay._id });
+  }
 }

@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Filters</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-item-group *ngFor="let filter of filters">
+	    <ion-item-divider color="light">{{filter.label}}</ion-item-divider>
+	    <ion-item *ngIf="filter.type === 'text'">
+	    	<ion-input type="text" [(ngModel)] = "query[filter.field]"></ion-input>
+	    </ion-item>
+	    <ion-item *ngIf="filter.type === 'dropdown'">
+	    	<ion-select [(ngModel)]= "query[filter.field]" multiple="true">
+		    	<ion-option *ngFor="let value of filter.value">{{value}}</ion-option>
+		    </ion-select>
+	    </ion-item>
+
+	    <ion-item *ngIf="filter.type === 'radio'">
+	    	<ion-list radio-group [(ngModel)]="query[filter.field]">
+			  <ion-item *ngFor="let val of filter.value">
+			    <ion-label>{{val.name}}</ion-label>
+			    <ion-radio value="val.value"></ion-radio>
+			  </ion-item>
+			</ion-list>
+	    </ion-item>
+
+
+	    <ion-item *ngIf="filter.type === 'date'">
+	    	
+	    </ion-item>
+
+
+	    <ion-item *ngIf="filter.type === 'checkbox'">
+	    	
+	    </ion-item>
+
+	</ion-item-group>
+</ion-content>
