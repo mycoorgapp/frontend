@@ -27,7 +27,7 @@ import { HomeStayDetailPage } from '../home-stay-detail/home-stay-detail';
 })
 export class SchedulePage  {
   @ViewChild('scheduleList', { read: List }) scheduleList: List;
-
+  
   dayIndex = 0;
   queryText = '';
   segment = 'all';

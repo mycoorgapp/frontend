@@ -75,7 +75,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
         { component: HomeStayDetailPage, name:'HomeStayDetail', segment:'homeStayDetail/:homeStayId'},
-        { component: BookingPage, name:'BookingPage', segment:'booking/:homeStayId'},
+        { component: BookingPage, name:'BookingPage', segment:'booking/:homeStay'},
         { component: FilterPage, name:"FilterPage", segment:'filter/:filterName'}
       ]
     }),

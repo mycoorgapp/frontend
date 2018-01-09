@@ -20,25 +20,23 @@ export class HomeStayDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeStayDetailPage');
-  }
-
-  ionViewWillEnter() {
     this.homeStayService.get(this.navParams.data.homeStayId).then(res => {
       console.log("res ", res);
       this.homestay = res;
       this.homestay.imageSlide = ["assets/img/speakers/bear.jpg","assets/img/speakers/lion.jpg","assets/img/speakers/duck.jpg","assets/img/speakers/lion.jpg"]
       return res;
     });
-    
-
   }
 
+  ionViewWillEnter() {
+  }
 
 	goToSessionDetail(session: any) {
 		this.navCtrl.push('HomeStayDetailPage', { sessionId: session.id });
 	}
 
   goToBooking(homestay){
-    this.navCtrl.push(BookingPage, { homeStayId: homestay._id });
+    console.log("homestay ", homestay);
+    this.navCtrl.push(BookingPage, { homeStay: homestay });
   }
 }

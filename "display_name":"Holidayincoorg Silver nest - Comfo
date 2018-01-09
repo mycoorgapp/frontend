@@ -1,0 +1,55 @@
+"display_name":"Holidayincoorg Silver nest - Comfort",
+"property_type": "Whole property only",
+"host_by":{"name": "chethan"},
+"property_details":{
+					"max_guests": 10, 
+					"min_price": 1999,
+					"bedrooms": 10,
+					"beds": 10,
+					"baths": 10,
+					"landmark": "raja's seat",
+					"location":"Coorg",
+					"location":"Madikeri",
+					"discount":0
+					},
+"property_discription":{
+					"discription":"One of the finest Homestays in Coorg which provides its guests the best holidaying experience in Coorg. It is situated in a cool and calm place in Madikeri , where once can relax , rejuvenate and enjoy the beauty of surroundings .
+					Silver nest is having 2 deluxe bed rooms with a living room, dining area & kitchen. Bedrooms are attached with bathrooms with modern amenities. it has ample parking facilities. A perfect destination to relax & enjoy holidaying in Coorg.",
+
+					"The space":"Well Maintained clean bed Rooms,Specious rooms with queen size bed, ward robe with locker facilities, living room with 32 inch LED TV, Kitchen facilities with basic requirements, Free WiFi Facility, Coffee/tea make, Doctor on call, Free Toiletries, Power Back up, Rooms attached with Wash rooms with modern amenities, 24 hours hot & cold water facility,Ample parking space, Complimentary breakfast,,Veg & Non Veg food against order.
+					Travel assistance, Itinerary for sightseeing, Taxi arrangements, bike rentals.",
+
+					"guest_access":""
+					},
+"Amenities":[
+							{"label":"Wi-Fi", "flag": true},
+							{"label":"Kitchen", "flag": true},
+							{"label":"Pets allowed", "flag": true},
+							{"label":"Essentials", "flag": true},
+							{"label":"Air conditioning", "flag": true},
+							{"label":"Pool", "flag": true},
+							{"label":"Washer", "flag": true}
+						],
+"Sleeping arrangements":[
+						{"label":"Queen bed", "room_cont": 1 , "available": true},
+						{"label":"Double bed", "room_cont": 2, "available": true},
+						{"label":"Single Bed", "room_cont": 4, "available": true}
+						],
+"House Rules":[ {"rule":"Not suitable for pets"}
+								{"rule":"No parties or events"}
+								{"rule":"Check-in time is 12PM (noon) - 12AM (midnight)"}
+								{"rule":"Check out by 10AM"			}			
+							],
+"Cancellations":[
+	{"rule":"Cancel up to 5 days before check in and get a full refund (minus service fees). Cancel within 5 days of your trip and the first night is non-refundable, but 50% of the cost for the remaining nights will be refunded. Service fees are refunded when cancellation happens before check in and within 48 hours of booking."}
+],
+"images":{"title": "home_page", "url":""},
+"image_List":[],
+"note_tag":"Use code HOMES. Discounts upto 50%.",
+"per_person_per_night_price":"Entire apartment at Rs 1000 per person",
+"per_person_price":1000
+
+
+
+
+
